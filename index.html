@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>jQuery Crash Course | Selectors</title>
+	<title>jQuery Crash Course | Events</title>
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 	<style>
 		body{
@@ -27,49 +27,103 @@
 </head>
 <body>
 	<header>
-		<h1>jQuery Crash Course</h1>
+		<h1>jQuery Crash Course | Events</h1>
 	</header>
 	<div id="container">
-		<h1 id="heading1">Heading One</h1>
-		<p id="para1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id lectus luctus, condimentum sapien faucibus, bibendum ligula. In hac habitasse platea dictumst. <span>Quisque ullamcorper</span> congue consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-		<h1 class="heading2">Heading Two</h1>
-		<p class="para2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id lectus luctus, condimentum sapien faucibus, bibendum ligula. In hac habitasse platea dictumst. <span>Quisque ullamcorper</span> congue consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-		<ul id="list">
-			<li>List Item</li>
-			<li>List Item</li>
-			<li>List Item</li>
-			<li>List Item</li>
-			<li>List Item</li>
-			<li>List Item</li>
-			<li>List Item</li>
-		</ul>
-
-		<input type="button" value="Button 1">
-		<input type="submit" value="Submit">
-		<input type="text">
-
-		<a href="http://google.com">Google</a>
-		<a href="http://yahoo.com">Yahoo</a>
+		<h3>Mouse Events</h3>
+		<button id="btn1" class="btnClass">Button 1</button>
+		<button id="btn2">Button 2</button>
+		<p class="para1">jQuery is built on top of JavaScript, a rich and expressive language in its own right. This section covers the basic concepts of JavaScript, as well as some frequent pitfalls for people who have not used JavaScript before. While it will be of particular value to people with no programming experience</p>
+		
+		<hr>
+		<form id="form">
+			<label>Name</label><br>
+			<input type="text" id="name" name="name">
+			<br>
+			<label>Email</label><br>
+			<input type="text" id="email" name="email">
+			<br>
+			<label>Gender</label><br>
+			<select id="gender" name="gender">
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+			</select>
+			<br>
+			<input type="submit" value="Submit">
+		</form>
 	</div>
 
 	<script>
-		//$('h1').hide();
-		//$('h1#heading1').hide();
-		//$('.heading2').hide();
+		$(document).ready(function(){
+			/*
+			$('#btn1').click(function(){
+				alert('Button Clicked!');
+			});
+			$('#btn1').on('click', function(){
+				alert('Button Clicked!');
+			});
+			$('#btn1').on('click', function(){
+				//$('.para1').hide();
+				$('.para1').toggle();
+			});
+			$('#btn2').on('click', function(){
+				$('.para1').show();
+			});
+			
+			$('#btn1').dblclick(function(){
+				$('.para1').toggle();
+			});
+			$('#btn1').hover(function(){
+				$('.para1').toggle();
+			});
+			$('#btn1').on('mouseenter', function(){
+				$('.para1').toggle();
+			});
+			$('#btn1').on('mouseleave', function(){
+				$('.para1').toggle();
+			});
+			$('#btn1').on('mousemove', function(){
+				$('.para1').toggle();
+			});
+		
+			$('#btn1').on('mousedown', function(){
+				$('.para1').toggle();
+			});
+			$('#btn1').on('mouseup', function(){
+				$('.para1').toggle();
+			});
+			$('#btn1').click(function(e){
+				//alert(e.currentTarget.id);
+				//alert(e.currentTarget.innerHTML);
+				//alert(e.currentTarget.outerHTML);
+				//alert(e.currentTarget.className);
+			});
+			$(document).on('mousemove', function(e){
+				$('#coords').html('Coords: Y: '+e.clientY+" X: "+e.clientX);
+			});
+			$('input').focus(function(){
+				//alert('Focus');
+				$(this).css('background', 'pink');
+			});
+			$('input').blur(function(){
+				//alert('Focus');
+				$(this).css('background', 'white');
+			});
+			$('input').keyup(function(e){
+				console.log(e.target.value);
+			});
+			*/
 
-		//$('p span').css('color', 'red');
+			$('select#gender').change(function(e){
+				alert(e.target.value);
+			});
 
-		$('ul#list li:first').css('color', 'red');
-		$('ul#list li:last').css('color', 'green');
-		$('ul#list li:even').css('background-color', 'yellow');
-		$('ul#list li:odd').css('background-color', '#cccccc');
-		$('ul#list li:nth-child(3n)').css('list-style', 'none');
-		$(':text').hide();
-		$('[href]').css('color', 'red');
-		$('a[href="http://yahoo.com"]').css('color', 'green');
-		//$('*').hide();
+			$('#form').submit(function(e){
+				e.preventDefault();
+				var name = $('input#name').val();
+				console.log(name);
+			});
+		});
 	</script>
 </body>
 </html>
